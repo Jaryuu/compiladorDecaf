@@ -25,7 +25,7 @@ myvar2:
 .global main
 main:
     ldr r1, addr_of_myvar1 /* r1 ← &myvar1 */
-    mov r3, #3             /* r3 ← 3 */
+    mov r3, #5	           /* r3 ← 3 */
     str r3, [r1]           /* *r1 ← r3 */
     ldr r2, addr_of_myvar2 /* r2 ← &myvar2 */
     mov r3, #4             /* r3 ← 4 */
