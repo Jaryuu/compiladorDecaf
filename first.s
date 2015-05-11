@@ -39,6 +39,6 @@ main:
     add r0, r1, r2
     bx lr
  
-/* Labels needed to access data */
+/* Labels*/
 addr_of_myvar1 : .word myvar1
 addr_of_myvar2 : .word myvar2
