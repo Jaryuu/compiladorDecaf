@@ -1,8 +1,9 @@
-/* -- first.s */
-/* This is a comment */
-.global main /* 'main' is our entry point and must be global */
-.func main   /* 'main' is a function */
+/* -- sum01.s */
+.global main
+.func main
  
-main:          /* This is main */
-    mov r0, #2 /* Put a 2 inside the register r0 */
-    bx lr      /* Return from main */
+main:
+    mov r1, #3      /* r1 ← 3 */
+    mov r2, #4      /* r2 ← 4 */
+    add r0, r1, r2  /* r0 ← r1 + r2 */
+    bx lr
