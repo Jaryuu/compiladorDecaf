@@ -1,7 +1,7 @@
 .text
 .align 2
 .global main0
-.type main, %function
+.type main0, %function
 main0:
 @Obteniendo los parametros y guardandolos en memoria
 MOV R0, #0
