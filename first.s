@@ -7,9 +7,9 @@ main0:
 LDR R0,=a
 LDR R0, [R0]
 MOV R1, #12
-STR R1, R0
+STR R1, =a
 ldmfd sp!, {lr}
 bx lr
 
 .section .data
-a: .word 0x0
+a: .word 0xf0f0f0f0
