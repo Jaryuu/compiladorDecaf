@@ -20,7 +20,7 @@ main:
     ldr r1, addr_base 
     ldr r1, [r1]      
     ldr r2, addr_base 
-    ldr r2, [r2]      
+    ldr r2, [r2,#2]      
     add r0, r1, r2
     bx lr
  
