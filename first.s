@@ -1,44 +1,11 @@
-/* -- store01.s */
- 
-/* -- Data section */
-.data
- 
-/* Ensure variable is 4-byte aligned */
-.balign 4
-/* Define storage for myvar1 */
-myvar1:
-    /* Contents of myvar1 is just '3' */
-    .word 0
- 
-/* Ensure variable is 4-byte aligned */
-.balign 4
-/* Define storage for myvar2 */
-myvar2:
-    /* Contents of myvar2 is just '3' */
-    .word 0
- 
-/* -- Code section */
 .text
- 
-/* Ensure function section starts 4 byte aligned */
-.balign 4
-.global main
-main:
-    ldr r1, addr_of_myvar1 /* r1 ← &myvar1 */
-    mov r3, #5	           /* r3 ← 3 */
-    str r3, [r1]           /* *r1 ← r3 */
-    ldr r2, addr_of_myvar2 /* r2 ← &myvar2 */
-    mov r3, #4             /* r3 ← 4 */
-    str r3, [r2]           /* *r2 ← r3 */
- 
-    /* Same instructions as above */
-    ldr r1, addr_of_myvar1 /* r1 ← &myvar1 */
-    ldr r1, [r1]           /* r1 ← *r1 */
-    ldr r2, addr_of_myvar2 /* r2 ← &myvar2 */
-    ldr r2, [r2]           /* r1 ← *r2 */
-    add r0, r1, r2
-    bx lr
- 
-/* Labels*/
-addr_of_myvar1 : .word myvar1
-addr_of_myvar2 : .word myvar2
+.align 2
+.global main0
+.type main, %function
+main0:
+@Obteniendo los parametros y guardandolos en memoria
+LDR R0, 0x0
+MOV R1, 12
+STR R0, R1
+ldmfd sp!, {lr}
+bx lr
