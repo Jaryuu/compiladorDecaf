@@ -7,7 +7,7 @@ main0:
 LDR R0,=a
 LDR R0, [R0]
 MOV R1, #12
-ST R1, R0
+STR R1, R0
 ldmfd sp!, {lr}
 bx lr
 
