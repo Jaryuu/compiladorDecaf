@@ -1,4 +1,3 @@
-addr_base : .word base
 .data
 .balign 4
 base:
