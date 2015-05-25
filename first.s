@@ -21,8 +21,9 @@ LDR R1, [R1,#4]
 LDR R2, addr_base
 LDR R2, [R2,#0]
 ADD R1, R1, R2
-STR R1, [R0,#0]
-MOV R0, R1
+STR R1, [R0,#4]
+LDR R0, addr_base
+LDR R0, [R0,#4]
 
 /*Fin codigo*/
 bx lr
