@@ -5,7 +5,7 @@ base:
 
 .text
 .global main
-.global printf
+
 
 main:
 /*Obteniendo los parametros y guardandolos en memoria*/
@@ -22,12 +22,12 @@ LDR R2, addr_base
 LDR R2, [R2,#0]
 ADD R1, R1, R2
 STR R1, [R0,#0]
-BL printf;
+MOV R0, R1
+BL puts;
 
 
 /*Fin codigo*/
 bx lr
 addr_base : .word base
 
-
-
+.global puts
