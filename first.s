@@ -1,3 +1,9 @@
+addr_base : .word base
+.data
+.balign 4
+base:
+.word 0
+
 .text
 .global main
 .global printf
