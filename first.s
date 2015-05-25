@@ -28,6 +28,7 @@ MOVLE R3, #0
 AND R2, R2, R3
 ORR R1, R1, R2
 STR R1, [R0,#0]
+MOV R0 R1
 /*Fin codigo*/
 bx lr
 addr_base : .word base
