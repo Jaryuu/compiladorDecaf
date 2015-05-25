@@ -1,27 +1,29 @@
-
 .data
- 
 .balign 4
 base:
-    .word 0
+.word 0
 
 .text
- 
-.balign 4
 .global main
 main:
-    ldr r1, addr_base 
-    mov r3, #3        
-    str r3, [r1]      
-    ldr r2, addr_base 
-    mov r3, #4        
-    str r3, [r2,#2]      
- 
-    ldr r1, addr_base 
-    ldr r1, [r1]      
-    ldr r2, addr_base 
-    ldr r2, [r2,#2]      
-    add r0, r1, r2
-    bx lr
- 
+@Obteniendo los parametros y guardandolos en memoria
+LDR R0, addr_base
+ADD R0, R0, #0
+MOV R1, #10
+STR R1, [R0]
+LDR R0, addr_base
+ADD R0, R0, #4
+MOV R1, #12
+STR R1, [R0]
+LDR R0, addr_base
+ADD R0, R0, #4
+LDR R1, addr_base
+LDR R1, [R1,#4]
+LDR R2, addr_base
+LDR R2, [R2,#0]
+ADD R1, R1, R2
+STR R1, [R0]
+@HALT
+ldmfd sp!, {lr}
+bx lr
 addr_base : .word base
