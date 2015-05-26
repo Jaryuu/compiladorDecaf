@@ -5,30 +5,34 @@ base:
 
 .text
 .global main
+metodo0:
+/*Obteniendo los parametros y guardandolos en memoria*/
+LDR R0, addr_base
+MOV R1, #12
+MOV R2, #15
+ADD R1, R1, R2
+STR R1, [R0,#4]
+LDR R0, addr_base
+LDR R0, [R0,#4]
+/*Retornando a donde se llamo al metodo.*/
+POP LR
+PUSH R0
+BX LR
+
 main:
 /*Obteniendo los parametros y guardandolos en memoria*/
 LDR R0, addr_base
-MOV R1, #1
-MOV R2, #2
-CMP R1, R2
-MOVGT R1, #1
-MOVLE R1, #0
-MOV R2, #3
-MOV R3, #4
-CMP R2, R3
-MOVGT R2, #1
-MOVLE R2, #0
-MOV R3, #5
-MOV R4, #6
-ADD R3, R3, R4
-MOV R4, #7
-CMP R3, R4
-MOVGT R3, #1
-MOVLE R3, #0
-AND R2, R2, R3
-ORR R1, R1, R2
-STR R1, [R0,#0]
-MOV R0, R1
+@Agregar estado actual a la pila
+PUSH R0
+PUSH R1
+@PUSH label0 esto no
+PUSH LR
+BL metodo0
+label0:
+POP R1
+POP R0
+STR R1, [R0,#8]
+LDR R0, [R0,#8]
 /*Fin codigo*/
 bx lr
 addr_base : .word base
