@@ -23,8 +23,8 @@ LDR R1, addr_base
 LDR R1, [R1,#1]
 ORR R0, R0, R1
 CMP R0, #0
-MOVEQR0, #1
-MOVNER0, #0
+MOVEQ R0, #1
+MOVNE R0, #0
 LDR R1, addr_base
 LDR R1, [R1,#2]
 ORR R0, R0, R1
