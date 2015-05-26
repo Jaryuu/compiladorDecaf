@@ -6,7 +6,6 @@ base:
 .text
 .global main
 fib1:
-/*Obteniendo los parametros y guardandolos en memoria*/
 POP {R0}
 MOV R1, R12
 STR R0, [R1,#0]
