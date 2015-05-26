@@ -6,6 +6,7 @@ base:
 .text
 .global main
 fib1:
+/*Obteniendo los parametros y guardandolos en memoria*/
 POP {R0}
 MOV R1, R12
 STR R0, [R1,#0]
@@ -42,7 +43,7 @@ ADD R12, R12, #16
 LDR R2, R12
 LDR R2, [R2,#0]
 MOV R3, #1
-DIF R2, R2, R3
+SUB R2, R2, R3
 PUSH {R2}
 BL fib1
 label0:
@@ -61,7 +62,7 @@ ADD R12, R12, #16
 LDR R3, R12
 LDR R3, [R3,#0]
 MOV R4, #2
-DIF R3, R3, R4
+SUB R3, R3, R4
 PUSH {R3}
 BL fib1
 label1:
@@ -103,6 +104,5 @@ POP {R0}
 SUB R12, R12, #4
 STR R2, [R1,#0]
 /*Fin codigo main*/
-MOV R0,R2
 BX LR
 addr_base : .word base
