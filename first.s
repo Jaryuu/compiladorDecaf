@@ -18,16 +18,7 @@ MOV R1, #1
 STR R1, [R0,#2]
 @Empieza aqui el If
 LDR R0, addr_base
-LDR R0, [R0,#0]
-LDR R1, addr_base
-LDR R1, [R1,#1]
-ORR R0, R0, R1
-CMP R0, #0
-MOVEQ R0, #1
-MOVNE R0, #0
-LDR R1, addr_base
-LDR R1, [R1,#2]
-ORR R0, R0, R1
+LDR R0, [R0,#1]
 /*If que hace el salto*/
 CMP R0, #0
 BEQ label_0_false
