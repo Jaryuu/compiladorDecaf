@@ -5,34 +5,47 @@ base:
 
 .text
 .global main
-metodo0:
-/*Obteniendo los parametros y guardandolos en memoria*/
-LDR R0, addr_base
-MOV R1, #12
-MOV R2, #15
-ADD R1, R1, R2
-STR R1, [R0,#4]
-LDR R0, addr_base
-LDR R0, [R0,#4]
-/*Retornando a donde se llamo al metodo.*/
-POP {LR}
-PUSH {R0}
-BX LR
-
 main:
 /*Obteniendo los parametros y guardandolos en memoria*/
 LDR R0, addr_base
-@Agregar estado actual a la pila
-PUSH {R0}
-PUSH {R1}
-@PUSH label0 esto no
-PUSH {LR}
-BL metodo0
-label0:
-POP {R1}
-POP {R0}
-STR R1, [R0,#8]
-LDR R0, [R0,#8]
-/*Fin codigo*/
+MOV R1, #1
+STR R1, [R0,#0]
+LDR R0, addr_base
+MOV R1, #0
+STR R1, [R0,#1]
+LDR R0, addr_base
+MOV R1, #1
+STR R1, [R0,#2]
+@Empieza aqui el If
+LDR R0, addr_base
+LDR R0, [R0,#0]
+LDR R1, addr_base
+LDR R1, [R1,#1]
+ORR R0, R0, R1
+MOV R0, !R0
+LDR R1, addr_base
+LDR R1, [R1,#2]
+ORR R0, R0, R1
+/*If que hace el salto*/
+CMP R0, 0
+BEQ label_0_false
+@ codigo del if
+LDR R1, addr_base
+MOV R2, #12
+STR R2, [R1,#7]
+LDR R1, addr_base
+MOV R2, #100
+STR R2, [R1,#3]
+B codeIf_0_next
+@ codigo del else
+label_0_false:
+LDR R1, addr_base
+MOV R2, #19
+STR R2, [R1,#11]
+LDR R1, addr_base
+MOV R2, #200
+STR R2, [R1,#3]
+codeIf_0_next:
+/*Fin codigo main*/
 bx lr
 addr_base : .word base
