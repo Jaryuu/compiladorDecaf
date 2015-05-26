@@ -7,12 +7,12 @@ base:
 .global main
 metodo0:
 /*Obteniendo los parametros y guardandolos en memoria*/
-LDR R0, R12
+MOV R0, R12
 MOV R1, #12
 MOV R2, #15
 ADD R1, R1, R2
 STR R1, [R0,#4]
-LDR R0, R12
+MOV R0, R12
 LDR R0, [R0,#4]
 /*Retornando a donde se llamo al metodo.*/
 POP {LR}
@@ -22,7 +22,7 @@ BX LR
 main:
 LDR R12, addr_base
 /*Obteniendo los parametros y guardandolos en memoria*/
-LDR R0, R12
+MOV R0, R12
 @Agregar estado actual a la pila
 PUSH {R0}
 PUSH {LR}
