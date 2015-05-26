@@ -34,5 +34,6 @@ POP {R0}
 SUB R12, R12, #12
 STR R1, [R0,#8]
 /*Fin codigo main*/
+MOV R0, R1
 BX LR
 addr_base : .word base
