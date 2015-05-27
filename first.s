@@ -39,12 +39,12 @@ MOV R1, R12
 PUSH {R0}
 PUSH {R1}
 PUSH {LR}
-ADD R12, R12, #16
 MOV R2, R12
 LDR R2, [R2,#0]
 MOV R3, #1
 SUB R2, R2, R3
 PUSH {R2}
+ADD R12, R12, #16
 BL fib1
 label0:
 POP {R3}
@@ -58,12 +58,12 @@ PUSH {R0}
 PUSH {R1}
 PUSH {R2}
 PUSH {LR}
-ADD R12, R12, #16
 MOV R3, R12
 LDR R3, [R3,#0]
 MOV R4, #2
 SUB R3, R3, R4
 PUSH {R3}
+ADD R12, R12, #16
 BL fib1
 label1:
 POP {R4}
@@ -94,9 +94,9 @@ MOV R0, R12
 @Agregar estado actual a la pila
 PUSH {R0}
 PUSH {LR}
-ADD R12, R12, #4
 MOV R1, #2
 PUSH {R1}
+ADD R12, R12, #4
 BL fib1
 label2:
 POP {R2}
