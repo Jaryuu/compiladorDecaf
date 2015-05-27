@@ -6,7 +6,7 @@ base:
 .text
 .global main
 main:
-MOV R12, addr_base
+LDR R12, addr_base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R0, R12
 MOV R1, #10
@@ -27,6 +27,6 @@ MUL R3, R1,  R4
 ADD R1, R2, R3
 STR R1, [R0,#44]
 /*Fin codigo main*/
-MOV R0, R1
+MOV R1, R0
 BX LR
 addr_base : .word base
