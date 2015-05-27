@@ -95,7 +95,7 @@ MOV R0, R12
 PUSH {R0}
 PUSH {LR}
 ADD R12, R12, #4
-MOV R1, #4
+MOV R1, #2
 PUSH {R1}
 BL fib1
 label2:
@@ -104,5 +104,6 @@ POP {R0}
 SUB R12, R12, #4
 STR R2, [R1,#0]
 /*Fin codigo main*/
+MOV R0 R2
 BX LR
 addr_base : .word base
