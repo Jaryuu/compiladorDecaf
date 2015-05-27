@@ -104,6 +104,6 @@ POP {R0}
 SUB R12, R12, #4
 STR R2, [R1,#0]
 /*Fin codigo main*/
-MOV R0 R2
+MOV R0, R2
 BX LR
 addr_base : .word base
