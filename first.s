@@ -73,13 +73,11 @@ LDR R6, [R6,#0]
 MOV R7, #1
 SUB R6, R6, R7
 PUSH {R6}
-ADD R11, R11, #16
 BL fibonacci1
 POP {R7}
 POP {R5}
 POP {R4}
 POP {R3}
-SUB R11, R11, #16
 STR R7, [R6,#4]
 MOV R6, R11
 @Agregar estado actual a la pila
@@ -92,14 +90,12 @@ LDR R7, [R7,#0]
 MOV R8, #2
 SUB R7, R7, R8
 PUSH {R7}
-ADD R11, R11, #16
 BL fibonacci1
 POP {R8}
 POP {R6}
 POP {R5}
 POP {R4}
 POP {R3}
-SUB R11, R11, #16
 STR R8, [R7,#8]
 MOV R7, R11
 MOV R8, R11
@@ -144,12 +140,10 @@ PUSH {R4}
 MOV R5, R11
 LDR R5, [R5,#4]
 PUSH {R5}
-ADD R11, R11, #8
 BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
-SUB R11, R11, #8
 STR R6, [R5,#0]
 MOV R5, R11
 MOV R6, R11
