@@ -155,4 +155,4 @@ BX LR
 .align 4
 int: .asciz "%d\n"
 char: .asciz "%s\n"
-base:	.space 12
+base:	.space 1024
