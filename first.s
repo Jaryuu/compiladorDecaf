@@ -1,11 +1,8 @@
 .data
 .balign 4
 base:
-.word 0
-
-.balign 4
 message: .asciz "%d\n"
-
+.word 0
 
 .text
 .global main
@@ -59,9 +56,9 @@ POP {R3}
 SUB R12, R12, #4
 STR R5, [R4,#0]
 MOV R4, R12
-LDR r0, address_of_message     
-LDR R1, [R4,#0]
-BL printf
+LDR R4, [R4,#0]
+MOV R0, R4
+BL puts
 MOV R5, R12
 @Agregar estado actual a la pila
 PUSH {R3}
@@ -80,15 +77,10 @@ POP {R3}
 SUB R12, R12, #4
 STR R7, [R6,#0]
 MOV R6, R12
-LDR R1, [R6,#0]
-LDR r0, address_of_message
-BL printf
-
-BL printf
+LDR R6, [R6,#0]
+MOV R0, R6
+BL puts
 /*Fin codigo main*/
 BX LR
 addr_base : .word base
 address_of_message : .word message
-
-.global printf
-.global scanf
