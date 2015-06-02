@@ -116,14 +116,10 @@ ADD R8, R8, R9
 STR R8, [R11, #12]
 codeIf_0_next:
 LDR R7, [R11, #12]
-LDR R0, =int
-MOV R1, R7
-BL printf
-LDR R8, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R9}
-PUSH {R8}
-MOV PC, R9
+POP {R8}
+PUSH {R7}
+MOV PC, R8
 main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
@@ -132,7 +128,7 @@ STR R4, [R11, #4]
 @Empieza aqui el while
 begin_0:
 LDR R3, [R11, #4]
-MOV R4, #40
+MOV R4, #10
 CMP R3, R4
 MOVLE R3, #1
 MOVGT R3, #0
