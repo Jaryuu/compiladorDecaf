@@ -100,7 +100,7 @@ STR R4, [R11, #4]
 @Empieza aqui el while
 begin_0:
 LDR R3, [R11, #4]
-MOV R4, #40
+MOV R4, #10
 CMP R3, R4
 MOVLE R3, #1
 MOVGT R3, #0
