@@ -2,7 +2,7 @@
 .global main
 main:
 stmfd sp!, {lr}
-LDR R11, addr_base
+LDR R11, =base
 push {lr}
 BL main0
 B exit
