@@ -1,8 +1,14 @@
+.section .data
+.align 4
+int: .asciz "%d\n"
+char: .asciz "%s\n"
+base: .word 0
+
 .text
 .global main
 main:
 stmfd sp!, {lr}
-LDR R11, addr_base
+LDR R11, =addr_base
 push {lr}
 BL main0
 B exit
@@ -157,9 +163,4 @@ mov r3, #0
 ldmfd sp!, {lr}
 BX LR
 
-.section .data
-.align 4
-int: .asciz "%d\n"
-char: .asciz "%s\n"
-base: .word 0
 addr_base: .word base
