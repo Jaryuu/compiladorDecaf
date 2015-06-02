@@ -13,7 +13,7 @@ main:
 stmfd sp!, {lr}
 LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
-MOV R3, #999
+MOV R3, #99
 LDR R0, =int
 MOV R1, R3
 BL printf
