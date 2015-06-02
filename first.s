@@ -2,7 +2,7 @@
 .global main
 main:
 stmfd sp!, {lr}
-LDR R12, =addr_base
+LDR R12, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R3, R12
 MOV R4, #0
