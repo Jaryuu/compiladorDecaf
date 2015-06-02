@@ -10,6 +10,7 @@ MOV PC, R4
 BX LR
 
 main:
+stmfd sp!, {lr}
 LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R3, #99
@@ -34,6 +35,9 @@ LDR R0, =int
 MOV R1, R4
 BL printf
 /*Fin codigo main*/
+mov r0, #0
+mov r3, #0
+ldmfd sp!, {lr}
 BX LR
 
 .section .data
