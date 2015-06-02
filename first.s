@@ -86,11 +86,11 @@ LDR R7, [R11, #4]
 LDR R8, [R11, #8]
 ADD R7, R7, R8
 STR R7, [R11, #12]
-codeIf_0_next:
 LDR R6, [R11, #12]
 LDR R0, =int
 MOV R1, R6
 BL printf
+codeIf_0_next:
 LDR R7, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
 POP {R8}
