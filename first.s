@@ -29,6 +29,8 @@ LDR R5, [R5,#0]
 MOV R6, #1
 ADD R5, R5, R6
 STR R5, [R4,#0]
+LDR R0, =int
+MOV R1, R5
 B begin_0
 codeWhile_0_next:
 MOV R0, R5;
@@ -36,5 +38,6 @@ MOV R0, R5;
 BX LR
 addr_base : .word base
 address_of_message : .word message
+int:	.asciz "%d\n"
 .global printf
 .global scanf
