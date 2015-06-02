@@ -1,14 +1,8 @@
-.section .data
-.align 4
-int: .asciz "%d\n"
-char: .asciz "%s\n"
-base: .word 0
-
 .text
 .global main
 main:
 stmfd sp!, {lr}
-LDR R11, =addr_base
+LDR R11, addr_base
 push {lr}
 BL main0
 B exit
@@ -73,12 +67,10 @@ LDR R5, [R5,#0]
 MOV R6, #1
 SUB R5, R5, R6
 PUSH {R5}
-ADD R11, R11, #16
 BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
-SUB R11, R11, #16
 STR R6, [R5,#4]
 MOV R5, R11
 @Agregar estado actual a la pila
@@ -90,13 +82,11 @@ LDR R6, [R6,#0]
 MOV R7, #2
 SUB R6, R6, R7
 PUSH {R6}
-ADD R11, R11, #16
 BL fibonacci1
 POP {R7}
 POP {R5}
 POP {R4}
 POP {R3}
-SUB R11, R11, #16
 STR R7, [R6,#8]
 MOV R6, R11
 MOV R7, R11
@@ -141,12 +131,10 @@ PUSH {R4}
 MOV R5, R11
 LDR R5, [R5,#4]
 PUSH {R5}
-ADD R11, R11, #8
 BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
-SUB R11, R11, #8
 STR R6, [R5,#0]
 MOV R5, R11
 MOV R6, R11
@@ -163,4 +151,8 @@ mov r3, #0
 ldmfd sp!, {lr}
 BX LR
 
-addr_base: .word base
+.section .data
+.align 4
+int: .asciz "%d\n"
+char: .asciz "%s\n"
+base:	.space 1024
