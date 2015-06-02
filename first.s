@@ -30,6 +30,8 @@ BL printf
 /*Fin codigo main*/
 BX LR
 
-.section .data.align 4int: .asciz "%d\n"
+.section .data
+.align 4
+int: .asciz "%d\n"
 char: .asciz "%s\n"
 base:	.space 12
