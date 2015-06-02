@@ -88,10 +88,14 @@ ADD R7, R7, R8
 STR R7, [R11, #12]
 codeIf_0_next:
 LDR R6, [R11, #12]
+LDR R0, =int
+MOV R1, R6
+BL printf
+LDR R7, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R7}
-PUSH {R6}
-MOV PC, R7
+POP {R8}
+PUSH {R7}
+MOV PC, R8
 main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
@@ -99,32 +103,12 @@ MOV R4, #0
 STR R4, [R11, #4]
 @Agregar estado actual a la pila
 PUSH {R3}
-LDR R4, [R11, #4]
+MOV R4, #10
 PUSH {R4}
 BL fibonacci1
 POP {R5}
 POP {R3}
 STR R5, [R11, #0]
-LDR R4, [R11, #0]
-LDR R0, =int
-MOV R1, R4
-BL printf
-@Agregar estado actual a la pila
-PUSH {R3}
-PUSH {R4}
-PUSH {R5}
-MOV R6, #10
-PUSH {R6}
-BL fibonacci1
-POP {R7}
-POP {R5}
-POP {R4}
-POP {R3}
-STR R7, [R11, #0]
-LDR R6, [R11, #0]
-LDR R0, =int
-MOV R1, R6
-BL printf
 POP {PC}
 exit:
 mov r0, #0
