@@ -10,7 +10,6 @@ MOV PC, R4
 BX LR
 
 main:
-
 LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R3, #99
@@ -35,7 +34,6 @@ LDR R0, =int
 MOV R1, R4
 BL printf
 /*Fin codigo main*/
-
 BX LR
 
 .section .data
