@@ -29,10 +29,10 @@ MOV R1, R5
 BL printf
 B begin_0
 codeWhile_0_next:
-MOV R0, R5;
 /*Fin codigo main*/
-BX LR
 ldmfd sp!, {lr}
+BX LR
+
 
 .section .data
 .align 4
