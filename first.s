@@ -26,6 +26,7 @@ ADD R5, R5, R6
 STR R5, [R4,#0]
 LDR R0, =int
 MOV R1, R5
+BL printf
 B begin_0
 codeWhile_0_next:
 MOV R0, R5;
