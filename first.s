@@ -113,7 +113,7 @@ BL printf
 PUSH {R3}
 PUSH {R4}
 PUSH {R5}
-MOV R6, #5
+MOV R6, #10
 PUSH {R6}
 BL fibonacci1
 POP {R7}
