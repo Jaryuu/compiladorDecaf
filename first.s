@@ -56,7 +56,7 @@ CMP R4, #0
 BEQ label_0_false
 @ codigo del if
 MOV R6, #1
-STR R6, [R11, #12]
+STR R6, [R11, #8]
 B codeIf_0_next
 @ codigo del else
 label_0_false:
@@ -73,13 +73,13 @@ POP {R7}
 POP {R5}
 POP {R4}
 POP {R3}
-STR R7, [R11, #4]
+STR R7, [R11, #0]
 @Agregar estado actual a la pila
 PUSH {R3}
 PUSH {R4}
 PUSH {R5}
 PUSH {R6}
-LDR R7, [R11, #0]
+LDR R7, [R11, #4]
 MOV R8, #2
 SUB R7, R7, R8
 PUSH {R7}
@@ -90,16 +90,16 @@ POP {R5}
 POP {R4}
 POP {R3}
 STR R8, [R11, #8]
-LDR R8, [R11, #4]
-LDR R9, [R11, #8]
+LDR R8, [R11, #0]
+LDR R9, [R11, #4]
 ADD R8, R8, R9
-STR R8, [R11, #12]
+STR R8, [R11, #8]
 codeIf_0_next:
-LDR R7, [R11, #12]
+LDR R7, [R11, #8]
 LDR R0, =int
 MOV R1, R7
 BL printf
-LDR R8, [R11, #12]
+LDR R8, [R11, #8]
 /*Retornando a donde se llamo al metodo.*/
 POP {R9}
 PUSH {R8}
