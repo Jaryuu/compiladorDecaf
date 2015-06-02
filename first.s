@@ -97,36 +97,34 @@ main0:
 PUSH {LR}
 MOV R4, #0
 STR R4, [R11, #4]
-@Empieza aqui el while
-begin_0:
-LDR R3, [R11, #4]
-MOV R4, #10
-CMP R3, R4
-MOVLE R3, #1
-MOVGT R3, #0
-/*If que hace el salto*/
-CMP R3, #0
-BEQ codeWhile_0_next
+@Agregar estado actual a la pila
+PUSH {R3}
+LDR R4, [R11, #4]
+PUSH {R4}
+BL fibonacci1
+POP {R5}
+POP {R3}
+STR R5, [R11, #0]
+LDR R4, [R11, #0]
+LDR R0, =int
+MOV R1, R4
+BL printf
 @Agregar estado actual a la pila
 PUSH {R3}
 PUSH {R4}
-LDR R5, [R11, #4]
 PUSH {R5}
+MOV R6, #5
+PUSH {R6}
 BL fibonacci1
-POP {R6}
+POP {R7}
+POP {R5}
 POP {R4}
 POP {R3}
-STR R6, [R11, #0]
-LDR R6, [R11, #4]
-MOV R7, #1
-ADD R6, R6, R7
-STR R6, [R11, #4]
-LDR R5, [R11, #4]
+STR R7, [R11, #0]
+LDR R6, [R11, #0]
 LDR R0, =int
-MOV R1, R5
+MOV R1, R6
 BL printf
-B begin_0
-codeWhile_0_next:
 POP {PC}
 exit:
 mov r0, #0
