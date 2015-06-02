@@ -96,10 +96,14 @@ ADD R8, R8, R9
 STR R8, [R11, #12]
 codeIf_0_next:
 LDR R7, [R11, #12]
+LDR R0, =int
+MOV R1, R7
+BL printf
+LDR R8, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R8}
-PUSH {R7}
-MOV PC, R8
+POP {R9}
+PUSH {R8}
+MOV PC, R9
 main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
