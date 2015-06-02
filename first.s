@@ -111,15 +111,10 @@ STR R8, [R7,#12]
 codeIf_0_next:
 MOV R7, R11
 LDR R7, [R7,#12]
-LDR R0, =int
-MOV R1, R7
-BL printf
-MOV R8, R11
-LDR R8, [R8,#12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R9}
-PUSH {R8}
-MOV PC, R9
+POP {R8}
+PUSH {R7}
+MOV PC, R8
 BX LR
 
 main0:
