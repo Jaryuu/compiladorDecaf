@@ -111,7 +111,7 @@ MOV R4, #0
 STR R4, [R11, #4]
 @Agregar estado actual a la pila
 PUSH {R3}
-MOV R4, #10
+MOV R4, #6
 PUSH {R4}
 BL fibonacci1
 POP {R5}
