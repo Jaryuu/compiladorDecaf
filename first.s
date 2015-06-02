@@ -102,10 +102,15 @@ STR R7, [R6,#12]
 codeIf_0_next:
 MOV R6, R11
 LDR R6, [R6,#12]
+LDR R0, =int
+MOV R1, R6
+BL printf
+MOV R7, R11
+LDR R7, [R7,#12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R7}
-PUSH {R6}
-MOV PC, R7
+POP {R8}
+PUSH {R7}
+MOV PC, R8
 BX LR
 
 main0:
@@ -146,11 +151,6 @@ LDR R6, [R6,#4]
 MOV R7, #1
 ADD R6, R6, R7
 STR R6, [R5,#4]
-MOV R5, R11
-LDR R5, [R5,#0]
-LDR R0, =int
-MOV R1, R5
-BL printf
 B begin_0
 codeWhile_0_next:
 /*Fin codigo main*/
