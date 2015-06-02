@@ -56,25 +56,29 @@ STR R5, [R11, #12]
 B codeIf_0_next
 @ codigo del else
 label_0_false:
-@Agregar estado actual a la pila
-PUSH {R3}
-PUSH {R4}
 LDR R5, [R11, #0]
 MOV R6, #1
 SUB R5, R5, R6
+STR R5, [R11, #16]
+@Agregar estado actual a la pila
+PUSH {R3}
+PUSH {R4}
+LDR R5, [R11, #16]
 PUSH {R5}
 BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
 STR R6, [R11, #4]
+LDR R6, [R11, #0]
+MOV R7, #2
+SUB R6, R6, R7
+STR R6, [R11, #16]
 @Agregar estado actual a la pila
 PUSH {R3}
 PUSH {R4}
 PUSH {R5}
-LDR R6, [R11, #0]
-MOV R7, #2
-SUB R6, R6, R7
+LDR R6, [R11, #16]
 PUSH {R6}
 BL fibonacci1
 POP {R7}
@@ -86,7 +90,7 @@ LDR R7, [R11, #4]
 LDR R8, [R11, #8]
 ADD R7, R7, R8
 STR R7, [R11, #12]
-LDR R6, [R11, #0]
+LDR R6, [R11, #16]
 LDR R0, =int
 MOV R1, R6
 BL printf
