@@ -1,41 +1,35 @@
 .text
 .global main
+metodo0:
+/*Obteniendo los parametros y guardandolos en memoria*/
+MOV R3, #3
+/*Retornando a donde se llamo al metodo.*/
+POP {R4}
+PUSH {R3}
+MOV PC, R4
+BX LR
+
 main:
-stmfd sp!, {lr}
 LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R3, R11
-MOV R4, #0
+@Agregar estado actual a la pila
+PUSH {R3}
+PUSH {LR}
+ADD R11, R11, #4
+BL metodo0
+POP {R4}
+POP {R3}
+SUB R11, R11, #4
 STR R4, [R3,#0]
-@Empieza aqui el while
-begin_0:
 MOV R3, R11
 LDR R3, [R3,#0]
-MOV R4, #10
-CMP R3, R4
-MOVLT R3, #1
-MOVGE R3, #0
-/*If que hace el salto*/
-CMP R3, #0
-BEQ codeWhile_0_next
-MOV R4, R11
-MOV R5, R11
-LDR R5, [R5,#0]
-MOV R6, #1
-ADD R5, R5, R6
-STR R5, [R4,#0]
 LDR R0, =int
-MOV R1, R5
+MOV R1, R3
 BL printf
-B begin_0
-codeWhile_0_next:
 /*Fin codigo main*/
-ldmfd sp!, {lr}
 BX LR
 
-
-.section .data
-.align 4
-int:	.asciz "%d\n"
+.section .data.align 4int: .asciz "%d\n"
+char: .asciz "%s\n"
 base:	.space 12
-
