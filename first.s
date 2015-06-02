@@ -52,7 +52,7 @@ CMP R3, #0
 BEQ label_0_false
 @ codigo del if
 MOV R5, #1
-STR R5, [R4,#12]
+STR R5, [R11, #12]
 B codeIf_0_next
 @ codigo del else
 label_0_false:
@@ -67,7 +67,7 @@ BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
-STR R6, [R5,#4]
+STR R6, [R11, #4]
 @Agregar estado actual a la pila
 PUSH {R3}
 PUSH {R4}
@@ -81,11 +81,11 @@ POP {R7}
 POP {R5}
 POP {R4}
 POP {R3}
-STR R7, [R6,#8]
+STR R7, [R11, #8]
 LDR R7, [R11, #4]
 LDR R8, [R11, #8]
 ADD R7, R7, R8
-STR R7, [R6,#12]
+STR R7, [R11, #12]
 LDR R6, [R11, #12]
 LDR R0, =int
 MOV R1, R6
@@ -100,7 +100,7 @@ main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
 MOV R4, #0
-STR R4, [R3,#4]
+STR R4, [R11, #4]
 @Empieza aqui el while
 begin_0:
 LDR R3, [R11, #4]
@@ -120,11 +120,11 @@ BL fibonacci1
 POP {R6}
 POP {R4}
 POP {R3}
-STR R6, [R5,#0]
+STR R6, [R11, #0]
 LDR R6, [R11, #4]
 MOV R7, #1
 ADD R6, R6, R7
-STR R6, [R5,#4]
+STR R6, [R11, #4]
 B begin_0
 codeWhile_0_next:
 POP {PC}
