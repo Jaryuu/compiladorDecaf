@@ -121,7 +121,7 @@ LDR R6, [R11, #4]
 MOV R7, #1
 ADD R6, R6, R7
 STR R6, [R11, #4]
-LDR R5, [R11, #0]
+LDR R5, [R11, #4]
 LDR R0, =int
 MOV R1, R5
 BL printf
