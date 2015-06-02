@@ -56,6 +56,11 @@ POP {R4}
 POP {R3}
 SUB R11, R11, #4
 STR R4, [R3,#0]
+MOV R3, R11
+LDR R3, [R3,#0]
+LDR R0, =int
+MOV R1, R3
+BL printf
 POP {PC}
 exit:
 mov r0, #0
