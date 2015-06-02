@@ -35,8 +35,6 @@ ldmfd sp!, {lr}
 
 .section .data
 .align 4
-addr_base : .word base
-address_of_message : .word message
 int:	.asciz "%d\n"
 base:	.space 12
 
