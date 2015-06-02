@@ -38,17 +38,15 @@ DivideU32:
 		.unreq shift
 metodo0:
 /*Obteniendo los parametros y guardandolos en memoria*/
+PUSH {LR}
 MOV R3, #3
 /*Retornando a donde se llamo al metodo.*/
 POP {R4}
 PUSH {R3}
 MOV PC, R4
-BX LR
-
 main0:
-stmfd sp!, {lr}
-LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
+PUSH {LR}
 MOV R3, R11
 @Agregar estado actual a la pila
 PUSH {R3}
@@ -58,7 +56,7 @@ POP {R4}
 POP {R3}
 SUB R11, R11, #4
 STR R4, [R3,#0]
-/*Fin codigo main*/
+POP {PC}
 exit:
 mov r0, #0
 mov r3, #0
