@@ -36,13 +36,13 @@ DivideU32:
 		.unreq result
 		.unreq remainder
 		.unreq shift
-
 fibonacci1:
 /*Obteniendo los parametros y guardandolos en memoria*/
 POP {R3}
 STR R3, [R11, #0]
 PUSH {LR}
-MOV R3, #2
+MOV R3, R11
+LDR R3, [R3,#0]
 LDR R0, =int
 MOV R1, R3
 BL printf
@@ -109,7 +109,8 @@ LDR R9, [R9,#8]
 ADD R8, R8, R9
 STR R8, [R7,#12]
 codeIf_0_next:
-MOV R7, #3
+MOV R7, R11
+LDR R7, [R7,#12]
 LDR R0, =int
 MOV R1, R7
 BL printf
@@ -122,52 +123,47 @@ MOV PC, R9
 BX LR
 
 main0:
+stmfd sp!, {lr}
+LDR R11, =base
 /*Obteniendo los parametros y guardandolos en memoria*/
 MOV R3, R11
 MOV R4, #0
 STR R4, [R3,#4]
-MOV R3, R11
-LDR R3, [R3,#4]
-LDR R0, =int
-MOV R1, R3
-BL printf
 @Empieza aqui el while
 begin_0:
-MOV R4, R11
-LDR R4, [R4,#4]
-MOV R5, #40
-CMP R4, R5
-MOVLE R4, #1
-MOVGT R4, #0
+MOV R3, R11
+LDR R3, [R3,#4]
+MOV R4, #40
+CMP R3, R4
+MOVLE R3, #1
+MOVGT R3, #0
 /*If que hace el salto*/
-CMP R4, #0
+CMP R3, #0
 BEQ codeWhile_0_next
-MOV R5, R11
+MOV R4, R11
 @Agregar estado actual a la pila
 PUSH {R3}
 PUSH {R4}
+MOV R5, R11
+LDR R5, [R5,#4]
 PUSH {R5}
-MOV R6, R11
-LDR R6, [R6,#4]
-PUSH {R6}
 ADD R11, R11, #8
 BL fibonacci1
-POP {R7}
-POP {R5}
+POP {R6}
 POP {R4}
 POP {R3}
 SUB R11, R11, #8
-STR R7, [R6,#0]
+STR R6, [R5,#0]
+MOV R5, R11
 MOV R6, R11
-MOV R7, R11
-LDR R7, [R7,#4]
-MOV R8, #1
-ADD R7, R7, R8
-STR R7, [R6,#4]
-MOV R6, R11
-LDR R6, [R6,#0]
+LDR R6, [R6,#4]
+MOV R7, #1
+ADD R6, R6, R7
+STR R6, [R5,#4]
+MOV R5, R11
+LDR R5, [R5,#0]
 LDR R0, =int
-MOV R1, R6
+MOV R1, R5
 BL printf
 B begin_0
 codeWhile_0_next:
