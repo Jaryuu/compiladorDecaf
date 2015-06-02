@@ -42,8 +42,6 @@ POP {R3}
 STR R3, [R11, #0]
 PUSH {LR}
 LDR R3, [R11, #0]
-MOV R4, #1
-SUB R3, R3, R4
 LDR R0, =int
 MOV R1, R3
 BL printf
