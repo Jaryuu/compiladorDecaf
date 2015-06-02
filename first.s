@@ -61,34 +61,54 @@ B codeIf_0_next
 @ codigo del else
 label_0_false:
 @Agregar estado actual a la pila
-PUSH {R3}
-PUSH {R4}
-PUSH {R5}
+/*Guardando todas las var. locales*/
+LDR R6, [R11, #0]
+PUSH {R6}
+LDR R6, [R11, #4]
+PUSH {R6}
+LDR R6, [R11, #8]
+PUSH {R6}
+LDR R6, [R11, #12]
+PUSH {R6}
 LDR R6, [R11, #0]
 MOV R7, #1
 SUB R6, R6, R7
 PUSH {R6}
 BL fibonacci1
 POP {R7}
-POP {R5}
-POP {R4}
-POP {R3}
+POP {R8}
+STR R8, [R11, #12]
+POP {R8}
+STR R8, [R11, #8]
+POP {R8}
+STR R8, [R11, #4]
+POP {R8}
+STR R8, [R11, #0]
 STR R7, [R11, #4]
 @Agregar estado actual a la pila
-PUSH {R3}
-PUSH {R4}
-PUSH {R5}
-PUSH {R6}
+/*Guardando todas las var. locales*/
+LDR R7, [R11, #0]
+PUSH {R7}
+LDR R7, [R11, #4]
+PUSH {R7}
+LDR R7, [R11, #8]
+PUSH {R7}
+LDR R7, [R11, #12]
+PUSH {R7}
 LDR R7, [R11, #0]
 MOV R8, #2
 SUB R7, R7, R8
 PUSH {R7}
 BL fibonacci1
 POP {R8}
-POP {R6}
-POP {R5}
-POP {R4}
-POP {R3}
+POP {R9}
+STR R9, [R11, #12]
+POP {R9}
+STR R9, [R11, #8]
+POP {R9}
+STR R9, [R11, #4]
+POP {R9}
+STR R9, [R11, #0]
 STR R8, [R11, #8]
 LDR R8, [R11, #4]
 LDR R9, [R11, #8]
@@ -96,23 +116,60 @@ ADD R8, R8, R9
 STR R8, [R11, #12]
 codeIf_0_next:
 LDR R7, [R11, #12]
+LDR R0, =int
+MOV R1, R7
+BL printf
+LDR R8, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R8}
-PUSH {R7}
-MOV PC, R8
+POP {R9}
+PUSH {R8}
+MOV PC, R9
 main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
 MOV R4, #0
 STR R4, [R11, #4]
+@Empieza aqui el while
+begin_0:
+LDR R3, [R11, #4]
+MOV R4, #40
+CMP R3, R4
+MOVLE R3, #1
+MOVGT R3, #0
+/*If que hace el salto*/
+CMP R3, #0
+BEQ codeWhile_0_next
+MOV R5, #0
+STR R5, [R11, #8]
 @Agregar estado actual a la pila
-PUSH {R3}
-MOV R4, #6
-PUSH {R4}
+/*Guardando todas las var. locales*/
+LDR R5, [R11, #0]
+PUSH {R5}
+LDR R5, [R11, #4]
+PUSH {R5}
+LDR R5, [R11, #8]
+PUSH {R5}
+LDR R5, [R11, #4]
+PUSH {R5}
 BL fibonacci1
-POP {R5}
-POP {R3}
-STR R5, [R11, #0]
+POP {R6}
+POP {R7}
+STR R7, [R11, #8]
+POP {R7}
+STR R7, [R11, #4]
+POP {R7}
+STR R7, [R11, #0]
+STR R6, [R11, #0]
+LDR R5, [R11, #0]
+LDR R0, =int
+MOV R1, R5
+BL printf
+LDR R7, [R11, #4]
+MOV R8, #1
+ADD R7, R7, R8
+STR R7, [R11, #4]
+B begin_0
+codeWhile_0_next:
 POP {PC}
 exit:
 mov r0, #0
