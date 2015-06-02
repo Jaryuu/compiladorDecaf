@@ -3,6 +3,10 @@
 base:
 .word 0
 
+.balign 4
+message: .asciz "%d\n"
+
+
 .text
 .global main
 metodo1:
@@ -55,6 +59,7 @@ POP {R3}
 SUB R12, R12, #4
 STR R5, [R4,#0]
 MOV R4, R12
+LDR r0, address_of_message     
 LDR R1, [R4,#0]
 BL printf
 MOV R5, R12
@@ -76,10 +81,14 @@ SUB R12, R12, #4
 STR R7, [R6,#0]
 MOV R6, R12
 LDR R1, [R6,#0]
+LDR r0, address_of_message
+BL printf
+
 BL printf
 /*Fin codigo main*/
 BX LR
 addr_base : .word base
-
+address_of_message : .word message
 
 .global printf
+.global scanf
