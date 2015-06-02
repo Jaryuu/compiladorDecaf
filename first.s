@@ -86,16 +86,24 @@ LDR R7, [R11, #4]
 LDR R8, [R11, #8]
 ADD R7, R7, R8
 STR R7, [R11, #12]
-LDR R6, [R11, #12]
+LDR R6, [R11, #0]
+MOV R7, #1
+SUB R6, R6, R7
 LDR R0, =int
 MOV R1, R6
 BL printf
+LDR R7, [R11, #0]
+MOV R8, #2
+SUB R7, R7, R8
+LDR R0, =int
+MOV R1, R7
+BL printf
 codeIf_0_next:
-LDR R7, [R11, #12]
+LDR R8, [R11, #12]
 /*Retornando a donde se llamo al metodo.*/
-POP {R8}
-PUSH {R7}
-MOV PC, R8
+POP {R9}
+PUSH {R8}
+MOV PC, R9
 main0:
 /*Obteniendo los parametros y guardandolos en memoria*/
 PUSH {LR}
