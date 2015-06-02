@@ -152,14 +152,18 @@ STR R7, [R11, #4]
 POP {R7}
 STR R7, [R11, #0]
 STR R6, [R11, #0]
-LDR R5, [R11, #0]
+LDR R5, [R11, #4]
 LDR R0, =int
 MOV R1, R5
 BL printf
-LDR R7, [R11, #4]
-MOV R8, #1
-ADD R7, R7, R8
-STR R7, [R11, #4]
+LDR R6, [R11, #0]
+LDR R0, =int
+MOV R1, R6
+BL printf
+LDR R8, [R11, #4]
+MOV R9, #1
+ADD R8, R8, R9
+STR R8, [R11, #4]
 B begin_0
 codeWhile_0_next:
 POP {PC}
