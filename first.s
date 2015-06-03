@@ -36,86 +36,6 @@ DivideU32:
 		.unreq result
 		.unreq remainder
 		.unreq shift
-fibonacci1:
-/*Obteniendo los parametros y guardandolos en memoria*/
-POP {R3}
-STR R3, [R11, #0]
-PUSH {LR}
-@Empieza aqui el If
-LDR R3, [R11, #0]
-MOV R4, #2
-CMP R3, R4
-MOVLT R3, #1
-MOVGE R3, #0
-/*If que hace el salto*/
-CMP R3, #0
-BEQ label_0_false
-@ codigo del if
-MOV R5, #1
-STR R5, [R11, #12]
-B codeIf_0_next
-@ codigo del else
-label_0_false:
-@Agregar estado actual a la pila
-/*Guardando todas las var. locales*/
-LDR R5, [R11, #0]
-PUSH {R5}
-LDR R5, [R11, #4]
-PUSH {R5}
-LDR R5, [R11, #8]
-PUSH {R5}
-LDR R5, [R11, #12]
-PUSH {R5}
-LDR R5, [R11, #0]
-MOV R6, #1
-SUB R5, R5, R6
-PUSH {R5}
-BL fibonacci1
-POP {R6}
-POP {R7}
-STR R7, [R11, #12]
-POP {R7}
-STR R7, [R11, #8]
-POP {R7}
-STR R7, [R11, #4]
-POP {R7}
-STR R7, [R11, #0]
-STR R6, [R11, #4]
-@Agregar estado actual a la pila
-/*Guardando todas las var. locales*/
-LDR R6, [R11, #0]
-PUSH {R6}
-LDR R6, [R11, #4]
-PUSH {R6}
-LDR R6, [R11, #8]
-PUSH {R6}
-LDR R6, [R11, #12]
-PUSH {R6}
-LDR R6, [R11, #0]
-MOV R7, #2
-SUB R6, R6, R7
-PUSH {R6}
-BL fibonacci1
-POP {R7}
-POP {R8}
-STR R8, [R11, #12]
-POP {R8}
-STR R8, [R11, #8]
-POP {R8}
-STR R8, [R11, #4]
-POP {R8}
-STR R8, [R11, #0]
-STR R7, [R11, #8]
-LDR R7, [R11, #4]
-LDR R8, [R11, #8]
-ADD R7, R7, R8
-STR R7, [R11, #12]
-codeIf_0_next:
-LDR R6, [R11, #12]
-/*Retornando a donde se llamo al metodo.*/
-POP {R7}
-PUSH {R6}
-MOV PC, R7
 factorial1:
 /*Obteniendo los parametros y guardandolos en memoria*/
 POP {R3}
@@ -129,13 +49,13 @@ MOVEQ R3, #1
 MOVNE R3, #0
 /*If que hace el salto*/
 CMP R3, #0
-BEQ label_1_false
+BEQ label_0_false
 @ codigo del if
 MOV R5, #1
 STR R5, [R11, #8]
-B codeIf_1_next
+B codeIf_0_next
 @ codigo del else
-label_1_false:
+label_0_false:
 @Agregar estado actual a la pila
 /*Guardando todas las var. locales*/
 LDR R5, [R11, #0]
@@ -159,7 +79,7 @@ STR R7, [R11, #0]
 LDR R7, [R11, #0]
 MUL R6, R6, R7
 STR R6, [R11, #8]
-codeIf_1_next:
+codeIf_0_next:
 LDR R5, [R11, #8]
 /*Retornando a donde se llamo al metodo.*/
 POP {R6}
@@ -180,22 +100,16 @@ MOVGT R3, #0
 /*If que hace el salto*/
 CMP R3, #0
 BEQ codeWhile_0_next
-MOV R5, #0
-STR R5, [R11, #8]
 @Agregar estado actual a la pila
 /*Guardando todas las var. locales*/
 LDR R5, [R11, #0]
 PUSH {R5}
 LDR R5, [R11, #4]
 PUSH {R5}
-LDR R5, [R11, #8]
-PUSH {R5}
 LDR R5, [R11, #4]
 PUSH {R5}
-BL fibonacci1
+BL factorial1
 POP {R6}
-POP {R7}
-STR R7, [R11, #8]
 POP {R7}
 STR R7, [R11, #4]
 POP {R7}
@@ -211,27 +125,6 @@ ADD R7, R7, R8
 STR R7, [R11, #4]
 B begin_0
 codeWhile_0_next:
-@Agregar estado actual a la pila
-/*Guardando todas las var. locales*/
-LDR R6, [R11, #0]
-PUSH {R6}
-LDR R6, [R11, #4]
-PUSH {R6}
-LDR R6, [R11, #8]
-PUSH {R6}
-MOV R6, #5
-PUSH {R6}
-BL factorial1
-POP {R7}
-POP {R8}
-STR R8, [R11, #8]
-POP {R8}
-STR R8, [R11, #4]
-POP {R8}
-STR R8, [R11, #0]
-LDR R0, =int
-MOV R1, R7
-BL printf
 POP {PC}
 exit:
 mov r0, #0
